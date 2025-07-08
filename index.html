@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation LaTeX - TOP EXCELLENCE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<style>
+/* --- VARIABLES & RESET --- */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --muted-text-color: #6c757d;
+    --primary-blue: #003366; /* Bleu institutionnel/académique */
+    --secondary-blue: #0056b3;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes title-animation {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- SECTIONS GÉNÉRALES --- */
+section {
+    padding: 80px 5%;
+    text-align: center;
+    overflow: hidden;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    color: var(--primary-blue);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background-color: var(--primary-blue);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 90vh; /* Augmenté un peu pour le logo */
+    display: flex;
+    flex-direction: column; /* Pour empiler logo et contenu */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 5%;
+    background-color: white;
+    position: relative;
+}
+
+/* --- LOGO AJOUTÉ --- */
+.logo {
+    max-width: 300px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+    margin-bottom: 40px; /* Espace entre le logo et le titre */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content .animate-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    animation: title-animation 1s ease-out forwards;
+}
+
+.hero-content .highlight {
+    color: var(--primary-blue);
+}
+
+.hero-content .animate-subtitle {
+    font-size: 1.2rem;
+    color: var(--muted-text-color);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeIn 1s 0.5s ease-out forwards;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeIn 1s 1s ease-out forwards;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 51, 102, 0.2);
+}
+
+/* --- INTRO SECTION --- */
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.benefit-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    border-top: 4px solid var(--primary-blue);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+.benefit-card:nth-child(2) { animation-delay: 0.2s; }
+.benefit-card:nth-child(3) { animation-delay: 0.4s; }
+.benefit-card:nth-child(4) { animation-delay: 0.6s; }
+
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.benefit-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.benefit-card p {
+    color: var(--muted-text-color);
+}
+
+/* --- PROGRAM SECTION (TIMELINE) --- */
+.program-section { background-color: white; }
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: var(--primary-blue);
+    opacity: 0.2;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.timeline-item:nth-child(odd) { left: 0; text-align: right;}
+.timeline-item:nth-child(even) { left: 50%; text-align: left;}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: -9px;
+    background-color: white;
+    border: 4px solid var(--primary-blue);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -9px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--bg-color);
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+.timeline-content h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--primary-blue); }
+.timeline-content p { color: var(--muted-text-color); font-size: 0.95rem; }
+
+/* --- TOOLS SECTION --- */
+.tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.tool-item {
+    background: white;
+    color: var(--primary-blue);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+.tool-item:hover {
+    background: var(--primary-blue);
+    color: white;
+    transform: scale(1.05);
+    border-color: var(--primary-blue);
+}
+
+
+/* --- INSCRIPTION SECTION --- */
+.inscription-section { background-color: white; }
+.inscription-section h2 { color: var(--primary-blue); }
+
+.form-container {
+    max-width: 600px;
+    margin: 40px auto 0 auto;
+    background: var(--bg-color);
+    padding: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.form-instruction { margin-bottom: 20px; font-size: 1.1rem; }
+
+.google-form-button {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--secondary-blue);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.google-form-button:hover {
+    background-color: var(--primary-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+}
+
+.form-help { margin-top: 20px; color: var(--muted-text-color); font-size: 0.9rem; }
+
+
+/* --- FOOTER --- */
+footer {
+    padding: 40px 5%;
+    text-align: center;
+    background-color: var(--primary-blue);
+    color: rgba(255,255,255,0.8);
+}
+footer p {
+    margin: 0 0 10px 0; /* Ajout d'un petit espace en bas */
+    line-height: 1.6;
+}
+footer .copyright {
+    margin-bottom: 20px; /* Espace entre copyright et contact */
+}
+/* Style pour les liens du footer */
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.3s;
+}
+footer a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    h2 { font-size: 2.2rem; }
+    .hero { min-height: 80vh; }
+    .hero-content .animate-title { font-size: 3rem; }
+
+    /* --- LOGO RESPONSIVE AJOUTÉ --- */
+    .logo {
+        max-width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 50px; padding-right: 15px; text-align: left !important; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 11px; }
+}
+</style>
+<body>
+
+    <header class="hero">
+        <!-- LOGO AJOUTÉ ICI -->
+        <img src="logo.png" alt="Logo TOP EXCELLENCE" class="logo">
+
+        <div class="hero-content">
+            <h1 class="animate-title">De la page blanche au document <span class="highlight">parfait</span>.</h1>
+            <p class="animate-subtitle">La formation complète par <strong>TOP EXCELLENCE</strong> pour maîtriser la composition de documents professionnels et académiques avec LaTeX.</p>
+            <a href="#inscription" class="cta-button">Commencer la formation</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section" id="about">
+            <h2>Pourquoi apprendre LaTeX ?</h2>
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <h3>Qualité Typographique</h3>
+                    <p>Produisez des documents d'une qualité visuelle et d'une lisibilité professionnelles, impossibles à atteindre avec un traitement de texte classique.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Automatisation & Efficacité</h3>
+                    <p>Générez automatiquement tables des matières, bibliographies, index et références. Concentrez-vous sur le contenu, pas sur la forme.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Puissance Mathématique</h3>
+                    <p>Écrivez des formules mathématiques, même les plus complexes, de manière simple, propre et universellement reconnue dans le monde scientifique.</p>
+                </div>
+                 <div class="benefit-card">
+                    <h3>Stabilité & Pérennité</h3>
+                    <p>Travaillez avec des fichiers texte simples, garantissant la compatibilité et la durabilité de vos documents pour les décennies à venir.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="program-section" id="programme">
+            <h2>Le Programme de la Formation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 1 : Fondamentaux et Environnement</h3>
+                        <p>Installation (MiKTeX/TeX Live), structure d'un document, compilation et gestion des premières erreurs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 2 : Mise en page et Typographie</h3>
+                        <p>Gestion des polices, paragraphes, listes et tableaux. Création de sections et chapitres personnalisés.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 3 : Les Mathématiques avec LaTeX</h3>
+                        <p>Maîtrise de l'environnement `amsmath` pour écrire des équations complexes, des symboles et des matrices.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 4 : Graphiques et Flottants</h3>
+                        <p>Inclusion d'images (`graphicx`), gestion des figures et des tables pour un positionnement optimal.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 5 : Bibliographie Automatisée</h3>
+                        <p>Maîtrise de `biblatex` pour gérer vos sources et générer une bibliographie parfaite en un clic.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Module 6 : Aller plus loin avec Beamer</h3>
+                        <p>Apprenez à créer des présentations (diaporamas) professionnelles et structurées directement avec LaTeX.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tools-section">
+             <h2>Les Outils que vous maîtriserez</h2>
+             <div class="tools-grid">
+                 <div class="tool-item">MiKTeX / TeX Live</div>
+                 <div class="tool-item">Overleaf (Éditeur en ligne)</div>
+                 <div class="tool-item">Bibliographie Automatisée</div> 
+                 <div class="tool-item">Beamer</div>
+                 <div class="tool-item">graphicx</div>
+                 <div class="tool-item">amsmath</div>
+             </div>
+        </section>
+
+        <section class="inscription-section" id="inscription">
+            <h2>Prêt à produire des documents d'exception ?</h2>
+            <p>Rejoignez-nous et faites passer la qualité de votre travail au niveau supérieur. Les places sont limitées.</p>
+            
+            <div class="form-container">
+                <p class="form-instruction">Cliquez sur le bouton ci-dessous pour accéder au formulaire d'inscription sécurisé.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfH3OMwPu4XxBN5ZiPzNdvoxIguyhQSV_m5OCAaZNQF7MkDXQ/viewform?usp=dialog" target="_blank" class="google-form-button">S'inscrire via Google Form</a>
+                <p class="form-help">Vous recevrez une confirmation par email après votre inscription.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER MIS À JOUR -->
+    <footer>
+        <p class="copyright">© 2025 TOP EXCELLENCE - Tous droits réservés.</p>
+        <div class="contact-info">
+            <p>Contact : <a href="tel:0770865634">0770 86 56 34</a></p>
+            <p>Email : <a href="mailto:Groupetopexcellence@gmail.com">Groupetopexcellence@gmail.com</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
